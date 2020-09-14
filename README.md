@@ -9,3 +9,14 @@ During a team's turn, the spymaster will give a clue that consists of a word and
 ## Clue Generator overview
 
 The goal of this program is the find a one word clue that can relate two or more words while avoiding 2 or more words. For instance, if I wanted to give a clue that would help my team get the words "phone" and "smoothie" while avoiding the word "orange", the generator should come up with the word "Blackberry" as blackberry was a phone and smoothies are most commonly thought of to contain berries.
+
+The clue generator uses word2vec, a pre-trained model that is capable of representing words using vectors. The vectors are how the clue generator is able to determine the similarity between two words and thus how the clue generator is able to give clues based on words to "connect" and words to avoid.
+
+## Usage
+
+
+## Requirements
+Use pip to install the required libraries
+```bash
+pip install gensim
+```
