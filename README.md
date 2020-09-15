@@ -14,9 +14,11 @@ The clue generator uses word2vec, a pre-trained model that is capable of represe
 
 ## Usage
 
+Run the word2vecCG.py file to use the clue generator. You will first be prompted for the path to the word2vec model (See the requirements section). 
 
 ## Requirements
 Use pip to install the required libraries
 ```bash
 pip install gensim
 ```
+You will also need to download the word2vec model. You can download it [here](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit)
