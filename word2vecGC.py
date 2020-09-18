@@ -35,3 +35,26 @@ if __name__ == '__main__':
         print('Please enter at least one word to avoid')
         exit()
 
+    results = model.most_similar(positive=wordsToConnect, negative=wordsToAvoid, restrict_vocab=50000, topn=20)
+
+    trimmed = []
+    for i in range(len(results)):
+        if len(trimmed) >= 10:
+            break
+
+        word = results[i][0]
+        canUse = True
+        for p in wordsToConnect:
+            if p.upper() in word.upper() or word.upper() in p.upper():
+                canUse = False
+
+        for p in wordsToAvoid:
+            if p.upper() in word.upper() or word.upper() in p.upper():
+                canUse = False
+
+        if canUse:
+            trimmed.append(word)
+
+    for i in range(len(trimmed)):
+        print(str(i+1) + '. ' + trimmed[i])
+
