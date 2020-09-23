@@ -14,7 +14,7 @@ The clue generator uses word2vec, a pre-trained model that is capable of represe
 
 ## Usage
 
-Run the word2vecCG.py file to use the clue generator. You will first be prompted for the path to the word2vec model (See the requirements section). You will then need to enter at least one (and at most 5) words to "connect". Then, you will need to enter at least one (and at most 3) words to avoid. The program will then try to find a single word clue that can relate all of your words while avoiding the others.
+Run the word2vecCG.py file to use the clue generator. You will first be prompted for the path to the word2vec model (See the requirements section). If the path to your model is very long and tiresome to type in, you can also change the hard-coded DEFAULTPATH variable (To use the default path submit an empty string when asked for the path). You will then need to enter at least one (and at most 5) words to "connect". Then, you will need to enter at least one (and at most 3) words to avoid. The program will then try to find a single word clue that can relate all of your words while avoiding the others.
 
 ## Requirements
 Use pip to install the required libraries

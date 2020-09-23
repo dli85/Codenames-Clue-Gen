@@ -1,7 +1,13 @@
 import gensim
 
+DEFAULTPATH = 'D:/Temp Downloads/GoogleNews-vectors-negative300.bin'
+
 if __name__ == '__main__':
     pathToModel = input('Please enter the path to the word2vec model (ends in .bin): ')
+
+    if len(pathToModel) == 0:
+        pathToModel = DEFAULTPATH
+
     model = gensim.models.KeyedVectors.load_word2vec_format(pathToModel, binary=True, limit=500000)
 
     wordsToConnect = []
@@ -12,6 +18,8 @@ if __name__ == '__main__':
     print('Enter words you would like to "connect". Max of 5 words, enter an empty word to finish\n')
     for i in range(connectMaxLen):
         word = input('Word ' + str(i + 1) + ": ")
+        word = word.strip()
+        word = word.lower()
         if word == '':
             print()
             break
@@ -21,6 +29,8 @@ if __name__ == '__main__':
     print('Enter words you would like to "avoid". max of 3 words, enter an empty word to finish')
     for i in range(avoidMaxLen):
         word = input('Word: ' + str(i + 1) + ": ")
+        word = word.strip()
+        word = word.lower()
         if word == '':
             print()
             break
