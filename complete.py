@@ -8,6 +8,16 @@ class Clue:
         self.score = score
         self.connected = connected
 
+def canUseWord(word, connect, blackWord):
+    for i in connect:
+        if word in i:
+            return False
+
+    if word in blackWord:
+        return False
+
+    return True
+
 if __name__ == '__main__':
     pathToModel = input('Please enter the path to the word2vec model (ends in .bin): ')
 
@@ -47,13 +57,17 @@ if __name__ == '__main__':
     while i < len(words):
         p = i+1
         while p < len(words):
-            wordsToConnect = [words[i], words[p]]
+            wordsToConnect = [str(words[i]), str(words[p])]
 
-            raw = model.most_similar(positive=wordsToConnect, negative=blackWord, restrict_vocab=50000, topn=20)
+            raw = model.most_similar(positive=wordsToConnect, negative=[blackWord], restrict_vocab=50000, topn=20)
 
             results = []
 
-            #TODO filter raw and sort by score.
+            for i in raw:
+                if canUseWord(i[0], words, blackWord) and len(results) <= 9:
+                    c = Clue(i[0], i[1], wordsToConnect)
+                    results.append(c)
+            print(wordsToConnect, results)
 
             p+=1
 
